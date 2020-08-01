@@ -17,8 +17,8 @@ struct ContentView: View {
         self.memryGame.choose(card: card)}
       }
     }.foregroundColor(Color.orange)
-    .padding(20.0)
-    .font(Font.largeTitle)
+    .padding()
+    .font(self.memryGame.cards.count <= 8 ? Font.largeTitle :Font.title)
   }
 }
 
@@ -34,6 +34,7 @@ struct CardView:View {
         RoundedRectangle(cornerRadius: 20.0).fill()
       }
     }
+    .aspectRatio(0.7, contentMode: .fit)
   }
 }
 
