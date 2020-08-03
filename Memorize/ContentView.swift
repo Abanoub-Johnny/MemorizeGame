@@ -9,16 +9,19 @@
 import SwiftUI
 
 struct ContentView: View {
-  var memryGame: EmojiMemoryGame
-  
+  @ObservedObject var memryGame: EmojiMemoryGame
+
   var body: some View {
-    HStack{ForEach(memryGame.cards){ card in
-      CardView(card:card).onTapGesture {
-        self.memryGame.choose(card: card)}
+    HStack{
+      ForEach(memryGame.cards){ card in
+        CardView(card:card).onTapGesture {
+          print("sdasdasdasdsad")
+          self.memryGame.choose(card: card)
+        }
       }
     }.foregroundColor(Color.orange)
     .padding()
-    .font(self.memryGame.cards.count <= 8 ? Font.largeTitle :Font.title)
+//    .font(self.memryGame.cards.count <= 8 ? Font.largeTitle :Font.title)
   }
 }
 
@@ -37,10 +40,6 @@ struct CardView:View {
     .aspectRatio(0.7, contentMode: .fit)
   }
 }
-
-
-
-
 
 
 struct ContentView_Previews: PreviewProvider {

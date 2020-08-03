@@ -8,9 +8,9 @@
 
 import Foundation
 
-class EmojiMemoryGame {
+class EmojiMemoryGame: ObservableObject {
   //private(set): means no one uses the class can update the game model while they all can read the model
-  private(set) var game:MemoryGame<String> = createMemoryGame()
+  @Published private var game:MemoryGame<String> = EmojiMemoryGame.createMemoryGame()
   
   static func createMemoryGame() -> MemoryGame<String> {
     let emojis: Array<String> = ["👻","🤓","👌","🧠","👅","🧛‍♂️"]
@@ -22,8 +22,7 @@ class EmojiMemoryGame {
   //MARK: - ACCESS to the Model
   
   var cards : Array<MemoryGame<String>.Card>{
-    game.cards.shuffle()
-    return game.cards
+    game.cards
   }
   // MARK: -Intent(s)
   
